@@ -9,7 +9,7 @@ $(function(){
     event.preventDefault();
   });
 
-  $(document).bind("saved", (data) => {
+  $(document).on("saved", (data) => {
     $("#saving").hide();
     $("#myForm").trigger('reset');
   });
