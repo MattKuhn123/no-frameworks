@@ -1,5 +1,5 @@
 import "jquery";
-import { getData } from "/table/service.js";
+import { getData } from "/app/table/service.js";
 
 $(function() {
   getData().then(async (response) => {

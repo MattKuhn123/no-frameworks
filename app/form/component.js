@@ -1,5 +1,5 @@
 import "jquery";
-import { save } from "/shared/shared-service.js";
+import { save } from "/app/shared/shared-service.js";
 
 $(function(){
   $("#saving").hide();

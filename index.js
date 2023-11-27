@@ -1,7 +1,7 @@
 import "jquery";
 
 $(function() {
-	$("#app").load("./app.html", function() {
+	$("#app").load("./app/app.html", function() {
     // Callback
 	});
 });
