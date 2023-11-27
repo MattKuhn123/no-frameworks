@@ -1,4 +1,4 @@
-import { environment } from "/environments/environment.js"
+import { environment } from "/environment.js"
 
 export function getData() {
   return fetch(environment.api);
