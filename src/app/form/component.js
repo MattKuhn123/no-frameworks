@@ -1,4 +1,3 @@
-import "jquery";
 import { save } from "/app/shared/shared-service.js";
 
 $(function(){

@@ -1,5 +1,3 @@
-import "jquery";
-
 $(function() {
 	$("#card").load("./app/card/component.html", function() {
     // Callback

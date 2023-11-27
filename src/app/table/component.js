@@ -1,4 +1,3 @@
-import "jquery";
 import { getData } from "/app/table/service.js";
 
 $(function() {
