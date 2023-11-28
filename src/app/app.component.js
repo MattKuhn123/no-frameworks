@@ -7,7 +7,7 @@ export const html = () => {
   return `
     ${style()}
     <div>
-      <p class="text-center">No frameworks!</p>
+      <h1 class="text-center">No frameworks!</h1>
       <div class="row-container">
         <div id="card">Card</div>
         <div id="table">Table</div>

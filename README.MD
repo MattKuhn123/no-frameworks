@@ -1,5 +1,5 @@
 # No frameworks
 
-## Install roolup
+## Install rollup
 
 `npm install --global rollup`
