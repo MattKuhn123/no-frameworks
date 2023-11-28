@@ -1,7 +1,6 @@
-import "jquery";
+import $ from 'jquery';
+import { html as appHtml, init as appInit } from './app/app.component';
 
-$(function() {
-	$("#app").load("./app/app.html", function() {
-    // Callback
-	});
-});
+const app = $('#app');
+app.html(appHtml());
+appInit();

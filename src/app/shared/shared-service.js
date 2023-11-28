@@ -1,4 +1,5 @@
-export function save(data) {
+import $ from 'jquery';
+export const save = (data) => {
   setTimeout(() => {
     console.log("trigger saved");
     $(document).trigger("saved", data);
