@@ -44,6 +44,3 @@ const style = () => {
     </style>
   `;
 }
-
-// $("#table").load("./app/table/component.html");
-// $("#form").load("./app/form/component.html");
