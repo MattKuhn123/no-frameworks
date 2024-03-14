@@ -1,6 +1,7 @@
 import $ from 'jquery';
-import { html as appHtml, init as appInit } from './app/app.component';
+import { init as appInit } from './app/app.component';
 
-const app = $('#app');
-app.html(appHtml());
-appInit();
+const app = $('#app-container');
+app.load("./assets/app.component.html", function() {
+    appInit();
+});

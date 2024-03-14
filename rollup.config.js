@@ -22,6 +22,7 @@ export default {
 		copy({
 			targets: [
 				{ src: 'src/index.html', dest: 'public' },
+				{ src: '**/*.component*.html', dest: 'public/assets/' },
 				{ src: 'src/assets/*', dest: 'public/assets/' }
 			]
 		}),
