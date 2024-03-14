@@ -2,12 +2,14 @@ import $ from 'jquery';
 import { getData } from "./data-service";
 import { init as rowInit } from "./table-row.component";
 
+/** @type {{text: string, number: string}} */
+let RowInput;
+
 const useHtmlTemplate = true;
 
 export const init = async () => {
   $("#tbody").text("loading...");
-  const response = await getData();
-  const datum = await response.json();
+  const datum = await getData();
   $("#tbody").text("");
 
   if (useHtmlTemplate) {
@@ -18,8 +20,12 @@ export const init = async () => {
 }
 
 // I prefer this because it's shorter
+/**
+ * 
+ * @param { RowInput[] } datum 
+ */
 const loadTableWithRawJavaScript = (datum) => {
-  const rows = datum.data.map(data => `
+  const rows = datum.map(data => `
     <tr>
       <td><p>${data.text}</p></td>
       <td><p>${data.number}</p></td>
@@ -31,12 +37,16 @@ const loadTableWithRawJavaScript = (datum) => {
 
 // I like this because it uses html templating.... 
 // But it still doesn't escape the issue of having HTML in the Javascript (at least notice the <tr></tr>)
+/**
+ * 
+ * @param { RowInput[] } datum 
+ */
 const loadTableWithHtmlTemplate = (datum) => {
-  for (let idx = 0; idx < datum.data.length; idx++) {
+  for (let idx = 0; idx < datum.length; idx++) {
     const row = $("<tr></tr>");
     row.load("./assets/table-row.component.html", function () {
       $("#tbody").append(row);
-      rowInit(datum.data[idx], idx);
+      rowInit(datum[idx], idx);
     });
   }
 }

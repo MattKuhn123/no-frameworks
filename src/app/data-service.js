@@ -1,5 +1,13 @@
 import { environment } from "./environment"
 
-export const getData = () => {
-  return fetch(environment.api);
+/** @type {{text: string, number: string}} */
+let GetDataResult;
+
+/**
+ * 
+ * @returns { Promise<GetDataResult[]> }
+ */
+export const getData = async () => {
+  const data = await fetch(environment.api);
+  return (await data.json()).data;
 }
