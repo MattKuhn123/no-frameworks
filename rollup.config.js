@@ -22,9 +22,9 @@ export default {
 		copy({
 			targets: [
 				{ src: 'src/index.html', dest: 'public' },
-				{ src: '**/*.component*.html', dest: 'public/assets/' },
-				{ src: 'src/assets/*', dest: 'public/assets/' }
-			]
+				{ src: ['src/app/**/*.component.html', 'src/assets/*'], dest: 'public/assets/' }
+			],
+			verbose: true
 		}),
 		replace({
 			'process.env.NODE_ENV': production,
