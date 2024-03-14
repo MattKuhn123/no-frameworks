@@ -19,14 +19,14 @@ export default {
 		resolve(), // tells Rollup how to find date-fns in node_modules
 		commonjs(), // converts date-fns to ES modules
 		production && terser(), // minify, but only in production
-    copy({
-      targets: [
-        { src: 'src/index.html', dest: 'public' },
-        { src: 'src/assets/*', dest: 'public/assets/' }
-      ]
-    }),
-    replace({
-      'process.env.NODE_ENV': production,
-    })
+		copy({
+			targets: [
+				{ src: 'src/index.html', dest: 'public' },
+				{ src: 'src/assets/*', dest: 'public/assets/' }
+			]
+		}),
+		replace({
+			'process.env.NODE_ENV': production,
+		})
 	]
 };
