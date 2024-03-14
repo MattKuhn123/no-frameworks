@@ -21,9 +21,9 @@ export default {
 		production && terser(), // minify, but only in production
 		copy({
 			targets: [
-				{ src: 'src\\index.html', dest: 'public' },
-				{ src: '**\\*.component*.html', dest: 'public\\assets\\' },
-				{ src: 'src\\assets\\*', dest: 'public\\assets\\' }
+				{ src: 'src/index.html', dest: 'public' },
+				{ src: '**/*.component*.html', dest: 'public/assets/' },
+				{ src: 'src/assets/*', dest: 'public/assets/' }
 			]
 		}),
 		replace({
