@@ -28,6 +28,7 @@ export default {
 		}),
 		replace({
 			'process.env.NODE_ENV': production,
+			preventAssignment: false
 		})
 	]
 };
