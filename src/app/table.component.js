@@ -23,13 +23,13 @@ export function Table(selector) {
       const datum = await getData();
       $("#tbody").text("");
   
-      this.loadTableWithHtmlTemplate(datum);
+      this.datumToTable(datum);
     },
   
     /**
      * @param { RowInput[] } datum 
      */
-    loadTableWithHtmlTemplate: function(datum) {
+    datumToTable: function(datum) {
       for (const element of datum) {
         const row = TableRow("#table", element);
       }
