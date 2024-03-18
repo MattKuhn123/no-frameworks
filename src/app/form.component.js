@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import { save } from "./shared/shared-service";
-import html from './form.component.html';
+import formHtml from './form.component.html';
 
 /** @type {{ init: function }} */
 let Component;
@@ -13,7 +13,7 @@ export function Form(selector) {
   const result = {
     init: function () {
       const form = $(selector);
-      form.html(html);
+      form.html(formHtml);
   
       $("#saving").hide();
       $("#myForm").on("submit", (event) => {

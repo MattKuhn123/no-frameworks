@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import { getData } from "./data-service";
-import html from './table.component.html';
+import tableHtml from './table.component.html';
 import { TableRow } from './table-row.component'
 
 /** @type {{ text: string, number: string }} */
@@ -17,7 +17,7 @@ export function Table(selector) {
   const result = {
     init: async function() {
       const table = $(selector);
-      table.html(html);
+      table.html(tableHtml);
   
       $("#tbody").text("loading...");
       const datum = await getData();

@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import html from "./card.component.html";
+import cardHtml from "./card.component.html";
 
 /** @type {{ init: function }} */
 let Component;
@@ -12,7 +12,7 @@ export function Card(selector) {
   const result = {
     init: function() {
       const card = $(selector);
-      card.html(html);
+      card.html(cardHtml);
     }
   };
 

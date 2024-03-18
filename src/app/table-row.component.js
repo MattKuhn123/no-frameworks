@@ -19,8 +19,6 @@ export function TableRow(selector, input) {
          * @param { number } idx 
          */
         init: function (input) {
-            console.log(input);
-            debugger;
             $(selector + ' > tbody:last-child').append(tableRowHtml);
 
             $(selector + ' > tbody tr:last td:first p').text(input.text);

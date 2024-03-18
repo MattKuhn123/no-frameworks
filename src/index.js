@@ -1,7 +1,4 @@
-import $ from 'jquery';
-import { init as appInit } from './app/app.component';
-import appHtml from './app/app.component.html';
+import { App } from './app/app.component';
 
-const app = $('#app-container');
-app.html(appHtml);
-appInit();
+const app = App("#app-container");
+console.log("OK");
