@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import { getData } from "./data-service";
 import { init as rowInit } from "./table-row.component";
+import rowHtml from './table-row.component.html'
 
 /** @type {{text: string, number: string}} */
 let RowInput;
@@ -43,10 +44,8 @@ const loadTableWithRawJavaScript = (datum) => {
  */
 const loadTableWithHtmlTemplate = (datum) => {
   for (let idx = 0; idx < datum.length; idx++) {
-    const row = $("<tr></tr>");
-    row.load("./assets/table-row.component.html", function () {
-      $("#tbody").append(row);
-      rowInit(datum[idx], idx);
-    });
+    const row = $(rowHtml);
+    $("#tbody").append(row);
+    rowInit(datum[idx], idx);
   }
 }

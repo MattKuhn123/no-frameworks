@@ -3,6 +3,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import terser from '@rollup/plugin-terser';
 import copy from 'rollup-plugin-copy';
 import replace from '@rollup/plugin-replace';
+import string from "./_build_tools/string";
 
 // `npm run build` -> `production` is true
 // `npm run dev` -> `production` is false
@@ -22,13 +23,17 @@ export default {
 		copy({
 			targets: [
 				{ src: 'src/index.html', dest: 'public' },
-				{ src: ['src/app/**/*.component.html', 'src/assets/*'], dest: 'public/assets/' }
+				{ src: ['src/assets/*', 'src/assets/*'], dest: 'public/assets/' }
 			],
 			verbose: true
 		}),
 		replace({
 			'process.env.NODE_ENV': production,
 			preventAssignment: false
+		}),
+		string({
+			include: "**/*.html",
+			exclude: ["**/index.html"]
 		})
 	]
 };
