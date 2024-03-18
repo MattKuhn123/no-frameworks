@@ -1,13 +1,33 @@
 import $ from 'jquery';
+import tableRowHtml from './table-row.component.html';
 
-/** @type {{text: string, number: string}} */
+/** @type {{ text: string, number: string }} */
 let RowInput;
 
+/** @type {{ init: function }} */
+let Component;
+
 /**
+ * @param { string } selector 
  * @param { RowInput } input 
- * @param { number } idx 
+ * @returns  { Component }
  */
-export const init = (input, idx) => {
-    $("p[name=cell-text]").eq(idx).text(input.text);
-    $("p[name=cell-number]").eq(idx).text(input.number);
+export function TableRow(input) {
+    const result = {
+        /**
+         * @param { RowInput } input 
+         * @param { number } idx 
+         */
+        init: function (input) {
+            console.log(input);
+            debugger;
+            $('#table > tbody:last-child').append(tableRowHtml);
+
+            $('#table > tbody:last-child td:first p').text(input.text);
+            $('#table > tbody:last-child td:last p').text(input.number);
+        }
+    };
+
+    result.init(input);
+    return result;
 }

@@ -1,51 +1,41 @@
 import $ from 'jquery';
 import { getData } from "./data-service";
-import { init as rowInit } from "./table-row.component";
-import rowHtml from './table-row.component.html'
+import html from './table.component.html';
+import { TableRow } from './table-row.component'
 
-/** @type {{text: string, number: string}} */
+/** @type {{ text: string, number: string }} */
 let RowInput;
 
-const useHtmlTemplate = true;
+/** @type {{ init: function }} */
+let Component;
 
-export const init = async () => {
-  $("#tbody").text("loading...");
-  const datum = await getData();
-  $("#tbody").text("");
-
-  if (useHtmlTemplate) {
-    loadTableWithHtmlTemplate(datum);
-  } else {
-    loadTableWithRawJavaScript(datum);
-  }
-}
-
-// I prefer this because it's shorter
 /**
- * 
- * @param { RowInput[] } datum 
+ * @param { string } selector 
+ * @returns { Component }
  */
-const loadTableWithRawJavaScript = (datum) => {
-  const rows = datum.map(data => `
-    <tr>
-      <td><p>${data.text}</p></td>
-      <td><p>${data.number}</p></td>
-    </tr>
-  `).join('');
+export function Table(selector) {
+  const result = {
+    init: async function() {
+      const table = $(selector);
+      table.html(html);
+  
+      $("#tbody").text("loading...");
+      const datum = await getData();
+      $("#tbody").text("");
+  
+      this.loadTableWithHtmlTemplate(datum);
+    },
+  
+    /**
+     * @param { RowInput[] } datum 
+     */
+    loadTableWithHtmlTemplate: function(datum) {
+      for (let idx = 0; idx < datum.length; idx++) {
+        const row = TableRow(datum[idx]);
+      }
+    }
+  };
 
-  $("#tbody").html(rows);
-}
-
-// I like this because it uses html templating.... 
-// But it still doesn't escape the issue of having HTML in the Javascript (at least notice the <tr></tr>)
-/**
- * 
- * @param { RowInput[] } datum 
- */
-const loadTableWithHtmlTemplate = (datum) => {
-  for (let idx = 0; idx < datum.length; idx++) {
-    const row = $(rowHtml);
-    $("#tbody").append(row);
-    rowInit(datum[idx], idx);
-  }
+  result.init();
+  return result;
 }

@@ -1,16 +1,34 @@
 import $ from 'jquery';
 import { save } from "./shared/shared-service";
+import html from './form.component.html';
 
-export const init = () => {
-  $("#saving").hide();
-	$("#myForm").on("submit", (event) => {
-    $("#saving").show();
-    save($("#myForm").serializeArray());
-    event.preventDefault();
-  });
+/** @type {{ init: function }} */
+let Component;
 
-  $(document).on("saved", (data) => {
-    $("#saving").hide();
-    $("#myForm").trigger('reset');
-  });
-};
+/**
+ * @param { string } selector 
+ * @returns { Component }
+ */
+export function Form(selector) {
+  const result = {
+    init: function () {
+      const form = $(selector);
+      form.html(html);
+  
+      $("#saving").hide();
+      $("#myForm").on("submit", (event) => {
+        $("#saving").show();
+        save($("#myForm").serializeArray());
+        event.preventDefault();
+      });
+    
+      $(document).on("saved", (data) => {
+        $("#saving").hide();
+        $("#myForm").trigger('reset');
+      });
+    }
+  }
+
+  result.init();
+  return result;
+}

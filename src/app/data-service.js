@@ -1,10 +1,9 @@
 import { environment } from "./environment"
 
-/** @type {{text: string, number: string}} */
+/** @type {{ text: string, number: string }} */
 let GetDataResult;
 
 /**
- * 
  * @returns { Promise<GetDataResult[]> }
  */
 export const getData = async () => {
