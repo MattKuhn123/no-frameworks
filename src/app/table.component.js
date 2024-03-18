@@ -30,8 +30,8 @@ export function Table(selector) {
      * @param { RowInput[] } datum 
      */
     loadTableWithHtmlTemplate: function(datum) {
-      for (let idx = 0; idx < datum.length; idx++) {
-        const row = TableRow(datum[idx]);
+      for (const element of datum) {
+        const row = TableRow("#table", element);
       }
     }
   };

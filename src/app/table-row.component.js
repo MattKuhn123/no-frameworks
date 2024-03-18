@@ -12,7 +12,7 @@ let Component;
  * @param { RowInput } input 
  * @returns  { Component }
  */
-export function TableRow(input) {
+export function TableRow(selector, input) {
     const result = {
         /**
          * @param { RowInput } input 
@@ -21,10 +21,10 @@ export function TableRow(input) {
         init: function (input) {
             console.log(input);
             debugger;
-            $('#table > tbody:last-child').append(tableRowHtml);
+            $(selector + ' > tbody:last-child').append(tableRowHtml);
 
-            $('#table > tbody:last-child td:first p').text(input.text);
-            $('#table > tbody:last-child td:last p').text(input.number);
+            $(selector + ' > tbody tr:last td:first p').text(input.text);
+            $(selector + ' > tbody tr:last td:last p').text(input.number);
         }
     };
 
