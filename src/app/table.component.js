@@ -1,21 +1,13 @@
 import $ from 'jquery';
 import { getData } from "./data-service";
 import tableHtml from './table.component.html';
-import { TableRow } from './table-row.component'
+import tableRowHtml from './table-row.component.html'
 
 /** @type {{ text: string, number: string }} */
 let RowInput;
 
-/** @type {{ init: function }} */
-let Component;
-
-/**
- * @param { string } selector 
- * @returns { Component }
- */
-export function Table(selector) {
-  const result = {
-    init: async function() {
+export class Table {
+    async bindTo(selector) {
       const table = $(selector);
       table.html(tableHtml);
   
@@ -23,19 +15,25 @@ export function Table(selector) {
       const datum = await getData();
       $("#tbody").text("");
   
-      this.datumToTable(datum);
-    },
+      this.datumToRows(datum);
+    }
   
     /**
      * @param { RowInput[] } datum 
      */
-    datumToTable: function(datum) {
+    datumToRows(datum) {
       for (const element of datum) {
-        const row = TableRow("#table", element);
+        this.dataToRow(element);
       }
     }
-  };
 
-  result.init();
-  return result;
+    /**
+     * @param { RowInput } data 
+     */
+    dataToRow(input) {
+      $('#table > tbody:last-child').append(tableRowHtml);
+
+      $('#table > tbody tr:last td:first p').text(input.text);
+      $('#table > tbody tr:last td:last p').text(input.number);
+    }
 }
