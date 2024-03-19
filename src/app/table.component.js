@@ -30,10 +30,10 @@ export class Table {
     /**
      * @param { RowInput } data 
      */
-    dataToRow(input) {
+    dataToRow(data) {
       $('#table > tbody:last-child').append(tableRowHtml);
 
-      $('#table > tbody tr:last td:first p').text(input.text);
-      $('#table > tbody tr:last td:last p').text(input.number);
+      $('#table > tbody tr:last td:first p').text(data.text);
+      $('#table > tbody tr:last td:last p').text(data.number);
     }
 }
